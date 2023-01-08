@@ -4,9 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>COACHTECH</title>
+    <link rel="stylesheet" href="resources/css/reset.css">
+    
     <style>
+        .all{
+            background-color:#2d197c;
+            height:100vh;
+            width:100vw;
+            position:relative;
+        }
 
+        .card{
+            background-color:white;
+            border-radius:10px;
+            width:50vh;
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+            padding:30px;
+        }
+
+        .title{
+            font-weight:bold;
+            font-size:24px;
+            margin-bottom:15px;
+        }
     </style>
 </head>
 <body>
@@ -36,16 +60,19 @@
                             @csrf
                         
                         <td>
-                            <input type="text" class="todo_update" value="{{$todo->content}}" name="content">
+                            <input type="text" class="todo_update" name="content" value="{{$todo->content}}" name="content">
                         </td>
                         <td>
-                            <button class="input_update">更新</button>
+                        <input type="hidden" name="id" value="{{$todo->id}}">
+                            <button type="submit" class="input_update">更新</button>
                         </td>
                         </form>
                         <td>
                             <form action="/remove" method="post" class="todo_remove">
                                 @csrf
-                                <button class="input_remove">削除</button>
+                                <input type="hidden" name="id" value="{{$todo->id}}">
+                                <input type="hidden" name="content" value="{{$todo->content}}" name="content">
+                                <button type="submit" class="input_remove">削除</button>
                             </form>
                         </td>
                     </tr>
