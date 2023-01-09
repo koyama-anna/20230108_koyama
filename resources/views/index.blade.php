@@ -135,6 +135,12 @@
             padding:8px 16px;
         }
 
+        .error{
+            font-size:16px;
+            font-weight:bold;
+            color:red;
+        }
+
 
     </style>
 </head>
@@ -147,10 +153,11 @@
                 @csrf
                     <input type="text" class="todo_create" name="content">
                     <input type="submit" class="create_btn" value="追加">
-                    @error('content')
-                    <p>{{$message}}</p>
-                    @enderror
+                    
                 </form>
+                @error('content')
+                    <p class="error">{{$message}}</p>
+                    @enderror
                 <table>
                     <tr>
                         <th>作成日</th>
