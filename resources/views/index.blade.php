@@ -18,7 +18,7 @@
         .card{
             background-color:white;
             border-radius:10px;
-            width:50vh;
+            width:50vw;
             position:absolute;
             top:50%;
             left:50%;
@@ -31,6 +31,111 @@
             font-size:24px;
             margin-bottom:15px;
         }
+
+        .todo_form{
+            margin-bottom:30px;
+            display:flex;
+            justify-content:space-between;
+        }
+
+        .todo_create{
+            width:80%;
+            border:1px solid #ccc;
+            border-radius:5px;
+            font-size:14px;
+        }
+
+        .create_btn{
+            border:2px solid #dc70fa;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:#dc70fa;
+            background-color:white;
+            padding:8px 16px;
+        }
+
+        .create_btn:hover{
+            border:2px solid #dc70fa;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:white;
+            background-color:#dc70fa;
+            padding:8px 16px;
+        }
+
+        .error{
+            color:red;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        table{
+            text-align:center;
+            width:100%;
+            border-collapse:collapse;
+            line-height:4;
+        }
+
+        th{
+            font-weight:bold;
+            padding-bottom:15px;
+        }
+
+        tr{
+            display:table-row;
+        }
+
+        .todo_update{
+            width:90%;
+            padding:5px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            font-size:14px;
+        }
+
+        .input_update{
+            border:2px solid #fa9770;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:#fa9770;
+            background-color:white;
+            padding:8px 16px;
+        }
+
+        .input_update:hover{
+            border:2px solid #fa9770;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:white;
+            background-color:#fa9770;
+            padding:8px 16px;
+        }
+
+        .input_remove{
+            border:2px solid #71fadc;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:#71fadc;
+            background-color:white;
+            padding:8px 16px;
+        }
+
+        .input_remove:hover{
+            border:2px solid #71fadc;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:white;
+            background-color:#71fadc;
+            padding:8px 16px;
+        }
+
+
     </style>
 </head>
 <body>
