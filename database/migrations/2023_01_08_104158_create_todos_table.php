@@ -18,6 +18,8 @@ class CreateTodosTable extends Migration
             $table->timestamp('created_at')->useCurrent()->nullable;
             $table->timestamp('updated_at')->useCurrent()->nullable;
             $table->string('content',20);
+            $table->integer('tag_id');
+            $table->integer('user_id');
         });
     }
 
