@@ -294,11 +294,11 @@
                         </td>
                         <td>
                             <select name="tag_id" class="select-tag" value="{{$todo->tag_id}}">
-                                <option value="1">家事</option>
-                                <option value="2">勉強</option>
-                                <option value="3">運動</option>
-                                <option value="4">食事</option>
-                                <option value="5">移動</option>
+                                <option value="1" @if($todo->tag_id==1) selected @endif>家事</option>
+                                <option value="2" @if($todo->tag_id==2) selected @endif>勉強</option>
+                                <option value="3" @if($todo->tag_id==3) selected @endif>運動</option>
+                                <option value="4" @if($todo->tag_id==4) selected @endif>食事</option>
+                                <option value="5" @if($todo->tag_id==5) selected @endif>移動</option>
                             </select>
                         </td>
                         <td>
