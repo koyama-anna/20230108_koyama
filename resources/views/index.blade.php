@@ -242,7 +242,7 @@
                         <option value="4">食事</option>
                         <option value="5">移動</option>
                     </select>
-                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    
                     <input type="submit" class="create_btn" value="追加">
                     
                 </form>

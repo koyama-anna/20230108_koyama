@@ -46,7 +46,7 @@ class TodoController extends Controller
         $user = Auth::user();
         $param = [
             'user' => $user,
-            'todos' => '',
+            'todos' => array(),
             'input' => ''
         ];
         return view('search', $param);
@@ -55,8 +55,12 @@ class TodoController extends Controller
     public function search(Request $request)
     {
         $user = Auth::user();
-        $todos = Todo::where('content', 'LIKE BINARY', "%{$request->input}%")
-            ->orwhere('tag_id', $request->input)->get();
+        if (empty($request->content) == false) {
+            $todos = Todo::where('content', 'LIKE BINARY', "%{$request->content}%")
+                ->where('tag_id', $request->tag_id)->get();
+        } else {
+            $todos = Todo::where('tag_id', $request->tag_id)->get();
+        };
         $param = [
             'user' => $user,
             'todos' => $todos,
