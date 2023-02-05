@@ -35,12 +35,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 15px;
         }
 
         .login_detail{
             font-size: 16px;
             margin-right: 1rem;
-            padding: 10px
         }
 
         .btn_logout{
@@ -67,6 +67,7 @@
             font-weight:bold;
             font-size:24px;
             margin-bottom: 15px;
+            padding: 10px
         }
 
         .btn_search{
@@ -105,7 +106,7 @@
             font-size:14px;
         }
 
-        .create_btn{
+        .find_btn{
             border:2px solid #dc70fa;
             border-radius:5px;
             font-size:12px;
@@ -115,7 +116,7 @@
             padding:8px 16px;
         }
 
-        .create_btn:hover{
+        .find_btn:hover{
             border:2px solid #dc70fa;
             border-radius:5px;
             font-size:12px;
@@ -202,6 +203,29 @@
             padding:8px 16px;
         }
 
+        .btn_back{
+            display: inline-block;
+            border:2px solid #6d7170;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:#6d7170;
+            background-color:white;
+            padding:8px 16px;
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+
+        .btn_back:hover{
+            border:2px solid #6d7170;
+            border-radius:5px;
+            font-size:12px;
+            font-weight:bold;
+            color:white;
+            background-color:#6d7170;
+            padding:8px 16px;
+        }
+
         .error{
             font-size:16px;
             font-weight:bold;
@@ -215,7 +239,7 @@
     <div class="all">
         <div class="card">
             <div class="card_header">
-            <p class="title">Todo List</p>
+            <p class="title">タスク検索</p>
             <div class="header_login">
                 @if(Auth::check())
                 <p class="login_detail">「{{$user->name}}」でログイン中</p>
@@ -229,13 +253,13 @@
             </form>
             </div>
             </div>
-            <a href="/find" class="btn_search">タスク検索</a>
             <div class="todo">
-                <form action="/create" method="post" class="todo_form">
+                <form action="/search" method="post" class="todo_form">
                 @csrf
                     <input type="text" class="todo_create" name="content">
                     
                     <select name="tag_id" class="select-tag">
+                        <option disabled selected value></option>
                         <option value="1">家事</option>
                         <option value="2">勉強</option>
                         <option value="3">運動</option>
@@ -243,7 +267,7 @@
                         <option value="5">移動</option>
                     </select>
                     <input type="hidden" name="user_id" value="{{$user->id}}">
-                    <input type="submit" class="create_btn" value="追加">
+                    <input type="submit" class="find_btn" value="検索">
                     
                 </form>
                 @error('content')
@@ -258,6 +282,7 @@
                         <th>更新</th>
                         <th>削除</th>
                     </tr>
+                    
                     @foreach($todos as $todo)
                     <tr>
                         <td>{{$todo->created_at}}</td>
@@ -269,11 +294,11 @@
                         </td>
                         <td>
                             <select name="tag_id" class="select-tag" value="{{$todo->tag_id}}">
-                                <option value="1" @if($todo->tag_id==1) selected @endif>家事</option>
-                                <option value="2" @if($todo->tag_id==2) selected @endif>勉強</option>
-                                <option value="3" @if($todo->tag_id==3) selected @endif>運動</option>
-                                <option value="4" @if($todo->tag_id==4) selected @endif>食事</option>
-                                <option value="5" @if($todo->tag_id==5) selected @endif>移動</option>
+                                <option value="1">家事</option>
+                                <option value="2">勉強</option>
+                                <option value="3">運動</option>
+                                <option value="4">食事</option>
+                                <option value="5">移動</option>
                             </select>
                         </td>
                         <td>
@@ -291,8 +316,10 @@
                         </td>
                     </tr>
                     @endforeach
+                    
                 </table>
             </div>
+            <a class="btn_back" href="/">戻る</a>
         </div>
     </div>
 </body>
