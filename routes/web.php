@@ -1,7 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
+use App\Models\Todo;
+use App\Models\Tag;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +32,10 @@ Route::get('/', function () {
 */
 
 Route::get('/dashboard', function () {
-    return view('/');
+    $user = Auth::user();
+    $todos = Todo::all();
+    $param = ['todos' => $todos, 'user' => $user];
+    return view('index', $param);
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
