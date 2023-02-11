@@ -21,9 +21,12 @@ class TodoController extends Controller
 
     public function create(TodoRequest $request)
     {
+        $user = Auth::user()->id;
         $form = $request->all();
         unset($form['_token']);
-        Todo::create($form);
+        $param = ['user_id' => $user];
+        $param_merge = array_merge($form, $param);
+        Todo::create($param_merge);
         return redirect('/');
     }
 
@@ -55,17 +58,23 @@ class TodoController extends Controller
     public function search(Request $request)
     {
         $user = Auth::user();
-        if (empty($request->content) == false) {
+        if (empty($request->content) == false && empty($request->tag_id) == false) {
             $todos = Todo::where('content', 'LIKE BINARY', "%{$request->content}%")
                 ->where('tag_id', $request->tag_id)->get();
-        } else {
+        } elseif (empty($request->content) == true && empty($request->tag_id) == false) {
             $todos = Todo::where('tag_id', $request->tag_id)->get();
+        } elseif (empty($request->content) == false && empty($request->tag_id) == true) {
+            $todos = Todo::where('content', 'LIKE BINARY', "%{$request->content}%")->get();
+        } else {
+            $todos = array();
         };
+        //dd($todos);
         $param = [
             'user' => $user,
             'todos' => $todos,
             'input' => $request->input
         ];
+        //dd($param);
         return view('search', $param);
     }
 }

@@ -21,8 +21,10 @@ use App\Models\User;
 Route::get('/', [TodoController::class, 'index']);
 Route::post('/create', [TodoController::class, 'create']);
 Route::post('/update', [TodoController::class, 'update']);
+Route::get('/remove', [TodoController::class, 'remove']);
 Route::post('/remove', [TodoController::class, 'remove']);
 Route::get('/find', [TodoController::class, 'find']);
+Route::get('/search', [TodoController::class, 'search']);
 Route::post('/search', [TodoController::class, 'search']);
 
 /*
