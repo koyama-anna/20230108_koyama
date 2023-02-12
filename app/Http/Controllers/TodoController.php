@@ -59,10 +59,12 @@ class TodoController extends Controller
     {
         $user = Auth::user();
         if (empty($request->content) == false && empty($request->tag_id) == false) {
-            $todos = Todo::where('content', 'LIKE BINARY', "%{$request->content}%")
+            $todos = Todo::where('user_id', Auth::user()->id)
+                ->where('content', 'LIKE BINARY', "%{$request->content}%")
                 ->where('tag_id', $request->tag_id)->get();
         } elseif (empty($request->content) == true && empty($request->tag_id) == false) {
-            $todos = Todo::where('tag_id', $request->tag_id)->get();
+            $todos = Todo::where('user_id', Auth::user()->id)
+                ->where('tag_id', $request->tag_id)->get();
         } elseif (empty($request->content) == false && empty($request->tag_id) == true) {
             $todos = Todo::where('content', 'LIKE BINARY', "%{$request->content}%")->get();
         } else {
