@@ -285,7 +285,8 @@
                             <form action="/remove" method="post" class="todo_remove">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$todo->id}}">
-                                <input type="hidden" name="content" value="{{$todo->content}}" name="content">
+                                <input type="hidden" name="content" value="{{$todo->content}}" >
+                                <input type="hidden" name="tag_id" value="{{$todo->tag_id}}" >
                                 <button type="submit" class="input_remove">削除</button>
                             </form>
                         </td>
