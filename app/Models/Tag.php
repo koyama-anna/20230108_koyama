@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Todo extends Model
+class Tag extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content', 'tag_id', 'user_id'];
+    protected $guarded = ['id'];
 }
