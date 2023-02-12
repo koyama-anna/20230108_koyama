@@ -18,7 +18,7 @@ use App\Models\User;
 |
 */
 
-Route::get('/', [TodoController::class, 'index']);
+Route::get('/', [TodoController::class, 'index'])->middleware(('auth'));
 Route::post('/create', [TodoController::class, 'create']);
 Route::post('/update', [TodoController::class, 'update']);
 Route::get('/remove', [TodoController::class, 'remove']);
@@ -33,11 +33,13 @@ Route::get('/', function () {
 });
 */
 
+
 Route::get('/dashboard', function () {
     $user = Auth::user();
     $todos = Todo::all();
     $param = ['todos' => $todos, 'user' => $user];
     return view('index', $param);
 })->middleware(['auth'])->name('dashboard');
+
 
 require __DIR__ . '/auth.php';
